@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^', include('home.urls')),
     url(r'^api/', include('api.urls')),
     url(r'^list_data/', include('list_data.urls')),
+    url(r'^invoice/', include('invoice.urls')),
     # url(r'^data/', include('data.urls')),
 ]
 

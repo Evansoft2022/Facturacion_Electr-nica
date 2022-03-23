@@ -14,7 +14,7 @@ def Electronic_Invoice_List(request):
 	invoice = Invoice.objects.filter(company = company)
 	print(invoice)
 	print('\nTermino en ',time.time() - start)
-	return render(request,'mounting.html',{'invoice':invoice})
+	return HttpResponse("Bien")
 
 
 

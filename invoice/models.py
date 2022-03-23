@@ -3,9 +3,24 @@ from company.models import *
 from client.models import *
 from api.translator import Translator
 from data.models import *
+# from empleoyee.models import Empleoyee
 
 
 t = Translator()
+
+class Consecutive_Elec(models.Model):
+	number = models.IntegerField()
+	company = models.ForeignKey(Company,on_delete=models.CASCADE,null = True)
+
+	def __str__(self):
+		return t.decodificar(str(self.company.business_name))
+
+class Consecutive_POS(models.Model):
+	number = models.IntegerField()
+	company = models.ForeignKey(Company,on_delete=models.CASCADE,null = True)
+
+	def __str__(self):
+		return t.decodificar(str(self.company.business_name))
 
 class Invoice(models.Model):
 	number = models.TextField()
@@ -20,7 +35,7 @@ class Invoice(models.Model):
 	ipo = models.TextField()
 	discount = models.TextField()
 	client = models.ForeignKey(Client,on_delete = models.CASCADE)
-	company = models.ForeignKey(Company,on_delete = models.CASCADE)
+	company = models.ForeignKey(Company,on_delete = models.CASCADE,null=True,blank=True)
 
 	def __str__(self):
 		return t.decodificar(self.number)
@@ -45,6 +60,12 @@ class Payment_Form_Invoice(models.Model):
 	duration_measure = models.TextField()
 	invoice = models.ForeignKey(Invoice,on_delete=models.CASCADE)
 
+
+class Wallet(models.Model):
+	invoice = models.ForeignKey(Invoice,on_delete=models.CASCADE)
+	client = models.ForeignKey(Client,on_delete = models.CASCADE)
+	price = models.TextField()
+	date = models.TextField()
 
 
 

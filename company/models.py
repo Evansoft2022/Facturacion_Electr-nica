@@ -21,6 +21,8 @@ class Company(models.Model):
 	resolution_expiration_date = models.CharField(max_length=10,default="")
 	block = models.BooleanField(default = False)
 	token = models.TextField(default = "" )
+	user = models.TextField(default = "")
+	password = models.TextField(default = "")
 
 	def __str__(self):
 		name = t.decodificar(self.business_name)

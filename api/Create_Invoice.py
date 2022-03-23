@@ -15,23 +15,21 @@ class CreateInvoice:
 	def Create_Invoice_Lines(self):
 		if not Validate_Invoice(self.invoice)[0]:
 			return Validate_Invoice(self.invoice)[1]
-		for i in range(1000):
-			print(i)
-			Invoice(
-				number = t.codificar(str(self.invoice['number'])),
-				prefix = t.codificar(str(self.invoice['prefix'])),
-				code = t.codificar(str(self.invoice['code'])),
-				quanty = t.codificar(str(self.invoice['quanty'])),
-				description = t.codificar(str(self.invoice['description'])),
-				price = t.codificar(str(self.invoice['price'])),
-				tax = t.codificar(str(self.invoice['tax'])),
-				notes = t.codificar(str(self.invoice['notes'])),
-				date = t.codificar(str(self.invoice['date'])),
-				ipo = t.codificar(str(self.invoice['ipo'])),
-				discount = t.codificar(str(self.invoice['discount'])),
-				client = Client.objects.get(identification_number = t.codificar(str(self.invoice['client']))),
-				company = Company.objects.get(documentIdentification = t.codificar(str(self.invoice['company'])))
-			).save()
+		Invoice(
+			number = t.codificar(str(self.invoice['number'])),
+			prefix = t.codificar(str(self.invoice['prefix'])),
+			code = t.codificar(str(self.invoice['code'])),
+			quanty = t.codificar(str(self.invoice['quanty'])),
+			description = t.codificar(str(self.invoice['description'])),
+			price = t.codificar(str(self.invoice['price'])),
+			tax = t.codificar(str(self.invoice['tax'])),
+			notes = t.codificar(str(self.invoice['notes'])),
+			date = t.codificar(str(self.invoice['date'])),
+			ipo = t.codificar(str(self.invoice['ipo'])),
+			discount = t.codificar(str(self.invoice['discount'])),
+			client = Client.objects.get(identification_number = t.codificar(str(self.invoice['client']))),
+			company = Company.objects.get(documentIdentification = t.codificar(str(self.invoice['company'])))
+		).save()
 
 	def Create_Payment_Form(self):
 		company = Company.objects.get(documentIdentification = t.codificar(str(self.invoice['company'])))

@@ -1,0 +1,119 @@
+{% extends '../base.html' %}
+{% block content %}
+<style>
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+	  -webkit-appearance: none; 
+	  margin: 0; 
+	}
+	input[type=number] { -moz-appearance:textfield; }
+</style>
+<div class="container-fluid">
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Facturación Electrónica</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- .row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="m-t-30">Cliente</h5>
+                            <select id="client" class="form-control select2 client">
+                                <option value="00">Seleccione un cliente</option>
+                                {% for i in client %}
+                                    <option value="{{i.pk}}">{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                    </div>
+                    <div class="col-md-2">
+                        <h5 class="m-t-30">Forma de Pago</h5>
+                        <select class="form-control select2 ">
+                            <option>Efectivo</option>
+                            <option>Crédito</option>
+                        </select>
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <h5 class="m-t-30"></h5>
+                        <select class="form-control select2 ">
+                            <option>Mustard</option>
+                            <option>Ketchup</option>
+                            <option>Relish</option>
+                        </select>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    	<h5 class="m-t-30">Producto</h5>
+                        <select id="product" class="form-control select2 product">
+                            <option value="00">Seleccione un producto</option>
+                            <option value="AK">Alaska</option>                               
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+	                    <h5 class="m-t-30">Cantidad</h5>
+	                    <input style="width:20%;" placeholder="0" class="form-control" type="number" id="example-text-input">
+	                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <!-- <p class="text-muted m-b-30">Data table example</p> -->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Numero</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Estado</th>
+                                <th>Total</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>$320,800</td>
+                                    <td>$320,800</td>
+                                    <td>$320,800</td>
+                                    <td>$320,800</td>
+                                    <td>$320,800</td>
+                                    <td>Enviar</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function(){
+        $(".client").change(function(){
+            if($("#client").val() != "00"){
+                $.ajax({
+                    data:{'pk':$("#client").val()},
+                    success:function(data){
+                        console.log(data)
+                    }
+                })
+            }
+        })
+    })
+</script>
+{% endblock %}

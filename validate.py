@@ -7,13 +7,13 @@ def Validate_Email(emal):
 def Validate_Phone(phone):
     phone = str(phone)
     if len(phone) == 7 or len(phone) == 10:
+        print(phone)
         return True
     return False
 
 
 def Validate_Invoice(data):
     for i in data:
-        print(data[i])
         if data[i] is None or data[i] == "":
             return (False,"The missing or wrong value is --> "+i)
     return (True,"No problem")

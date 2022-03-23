@@ -52,5 +52,69 @@ class Payment_Method(models.Model):
 		return self.name
 
 
+class Type_Worker(models.Model):
+	_id = models.IntegerField()
+	name = models.CharField(max_length=80)
+
+	def __str__(self):
+		return self.name
+
+
+class Payroll_Type_Document_Identification(models.Model):
+	_id = models.IntegerField()
+	name = models.CharField(max_length=80)
+
+	def __str__(self):
+		return self.name
+
+class Type_Contract(models.Model):
+	_id = models.IntegerField()
+	name = models.CharField(max_length=80)
+
+	def __str__(self):
+		return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
